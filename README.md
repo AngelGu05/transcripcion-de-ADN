@@ -3,6 +3,7 @@
 App de estudio sobre la transcripción del ADN en células eucariotas.
 
 - **Proceso**: animación continua de la transcripción (1:41) dividida en 10 partes, con pausa, línea de tiempo, velocidad y subtítulos. Toca cualquier parte para ver qué es y qué hace. Incluye el modo "Ponme a prueba".
+- **Leer todo**: toda la información del proceso en una sola página para leer: resumen por parte, las 10 partes con imagen, explicación y cada componente (qué es / qué hace), glosario A–Z, buscador e impresión a PDF.
 - **Lo general**: definición, dogma central, tipos de ARN, características, polimerasas, procesamiento, eucariotas vs. procariotas y errores.
 - **Examen**: simulacro de 115 puntos en 4 partes (selección, completar, análisis de imágenes y desarrollo).
 - **Práctica**: rondas de 8 preguntas por tema y repaso de errores.

@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="theme-color" content="#05070B">
-<meta name="description" content="App para estudiar la transcripción del ADN: animación interactiva, resumen, examen de práctica y práctica rápida.">
+<meta name="description" content="App para estudiar la transcripción del ADN: animación interactiva, lectura completa, resumen, examen de práctica y práctica rápida.">
 <style>[hidden]{display:none!important}img{max-width:100%}:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}</style>
 <title>Transcripción del ADN</title>
 <meta name="claude:viewport-fit-sides" content="cover">
@@ -152,6 +152,54 @@ main{padding-block:22px 60px}
 .hit.sel{filter:drop-shadow(0 0 3px var(--focus)) drop-shadow(0 0 7px var(--focus))}
 .hit.good{filter:drop-shadow(0 0 4px var(--ok)) drop-shadow(0 0 9px var(--ok))}
 
+
+/* ===== LEER TODO ===== */
+:root{--hh:64px}
+.leer{display:grid;grid-template-columns:220px minmax(0,1fr);gap:24px;align-items:start}
+.toc{position:sticky;top:calc(var(--hh) + 16px);display:grid;gap:3px;max-height:calc(100vh - var(--hh) - 32px);overflow:auto;padding:10px;border:1px solid var(--line);border-radius:14px;background:rgba(16,21,30,.86);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px)}
+.toc .tt{padding:2px 10px 6px}
+.toc a{display:flex;gap:10px;align-items:baseline;padding:6px 10px;border-radius:8px;color:var(--muted);text-decoration:none;font-weight:700;font-size:.92rem}
+.toc a:hover{background:var(--surface2);color:var(--ink)}
+.toc a.on{color:var(--accent);background:var(--accent-soft)}
+.toc a b{font:700 .78rem var(--mono);color:inherit;min-width:26px}
+@media (max-width:900px){.leer{grid-template-columns:minmax(0,1fr)}
+ .toc{top:var(--hh);z-index:3;display:flex;overflow-x:auto;max-height:none;border-radius:0;border-width:0 0 1px;margin-inline:calc(-1*max(16px,env(safe-area-inset-left,0px)));padding:8px max(16px,env(safe-area-inset-left,0px))}
+ .toc a{white-space:nowrap;flex:none}.toc .tt{display:none}}
+.lbody{display:grid;gap:18px;min-width:0}
+.lbody>*{min-width:0}
+.sumlist{list-style:none;padding-left:0!important}
+.ltools{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+.ltools input{flex:1;min-width:220px;background:var(--surface2);border:1px solid var(--line);border-radius:10px;padding:10px 14px;color:var(--ink)}
+.ltools input:focus{outline:none;border-color:var(--accent)}
+.lpart{scroll-margin-top:calc(var(--hh) + 70px)}
+.lpart h2{font-size:1.5rem;margin:6px 0 12px}
+.lpart>p,.lpart>ol{max-width:75ch}
+.lpart>ol{padding-left:22px}
+.lfig{border:1px solid var(--line);border-radius:10px;background:var(--stage);overflow-x:auto;margin:6px 0 14px;
+  background-image:linear-gradient(var(--grid) 1px,transparent 1px),linear-gradient(90deg,var(--grid) 1px,transparent 1px);background-size:24px 24px}
+.lfig svg{display:block;width:100%;min-width:620px;height:auto}
+.lfig text{font-family:var(--body)}
+.sumlist li{margin-bottom:8px}
+.comps{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,300px),1fr));gap:12px;margin-top:8px}
+.comp{border:1px solid var(--line);border-left:4px solid var(--c);border-radius:10px;padding:12px 14px;background:var(--surface2);min-width:0}
+.comp h4{margin:0 0 6px;font:800 1.05rem var(--display);color:var(--ink)}
+.comp p{margin:2px 0 0}
+.comp .note{margin-top:10px}
+.lab2{font:700 .68rem var(--mono);letter-spacing:.07em;text-transform:uppercase;margin-top:10px}
+.lab2.q{color:var(--accent)}.lab2.h{color:var(--ok)}.lab2.n{color:var(--prom)}
+mark{background:rgba(255,194,61,.35);color:var(--ink);border-radius:3px;padding:0 1px}
+.lempty{display:none}
+@media print{
+ header,.bgdeco,.toc,.ltools,nav,.row,body::before,.legend{display:none!important}
+ :root{--ink:#111;--muted:#444;--surface:#fff;--surface2:#f5f5f5;--stage:#fff;--grid:#eee;--line:#bbb;color-scheme:light}
+ body{background:#fff!important;color:#111}
+ main>section:not(#v-leer){display:none!important}
+ .leer{display:block}.lbody{display:block}
+ .card{background:#fff!important;-webkit-backdrop-filter:none;backdrop-filter:none;border-color:#bbb;margin-bottom:14px}
+ .lpart{break-inside:auto}.comp,.lfig{break-inside:avoid}
+ .lfig svg{min-width:0}
+}
+
 /* ===== GENERAL ===== */
 .gen{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,340px),1fr));gap:16px}
 .gen .card h2{font-size:1.25rem;margin-bottom:10px;display:flex;justify-content:space-between;gap:8px;align-items:baseline;flex-wrap:wrap}
@@ -265,6 +313,7 @@ input.bad{border-bottom-color:var(--bad)!important;color:var(--bad)!important;te
     <div class="brand"><h1>Transcripción</h1><span class="flow">ADN → <b>ARN</b> → proteína</span></div>
     <nav class="tabs" aria-label="Secciones">
       <a href="#proceso">Proceso</a>
+      <a href="#leer">Leer todo</a>
       <a href="#general">Lo general</a>
       <a href="#examen">Examen</a>
       <a href="#practica">Práctica</a>
@@ -311,6 +360,9 @@ input.bad{border-bottom-color:var(--bad)!important;color:var(--bad)!important;te
     <span class="pill v">Video</span><span class="pill p">PPT</span><span class="pill a">Apuntes</span><span class="pill x">Externo</span>
     <span>· Lo marcado como externo no está en tus materiales: se agregó para completar o corregir. · Atajos: espacio = pausa, ← → = retroceder/adelantar.</span></div>
 </section>
+
+<!-- LEER TODO -->
+<section id="v-leer" hidden><div class="leer" id="leer"></div></section>
 
 <!-- LO GENERAL -->
 <section id="v-general" hidden>
@@ -1212,11 +1264,83 @@ function pAfter(q,ok){
  let last=0;function loop(ts){if(ts-last>33){last=ts;paint(ts/1000)}requestAnimationFrame(loop)}requestAnimationFrame(loop);
 })();
 
+
+/* ---------- LEER TODO ---------- */
+const SUM=['Antes del gen está el promotor (con la caja TATA); el gen tiene exones e intrones; río arriba, la región intergénica con el enhancer.',
+ 'La TBP se une a la caja TATA y luego se ensamblan los demás factores de transcripción basales en el promotor.',
+ 'La ARN polimerasa II se une al complejo; su sitio activo queda en el sitio +1, 25–30 pb río abajo del promotor. Aún no empieza.',
+ 'Una proteína activadora se une al enhancer, el ADN se dobla y la proteína mediadora conecta con el promotor: la polimerasa se activa.',
+ 'Se abre la burbuja; la polimerasa lee la hebra molde de 3′ a 5′ y fabrica el ARN de 5′ a 3′ con ribonucleótidos trifosfato (U en vez de T).',
+ 'Se agrega la caperuza 5′ (7-metilguanosina trifosfato): protege de la XRN2 y ayuda a que el ribosoma reconozca el ARNm.',
+ 'El espliceosoma quita los intrones (en forma de lazo) y une los exones; el splicing alternativo permite varias proteínas por gen.',
+ 'Señal AAUAAA → corte 15–17 nt río abajo → la poli(A) polimerasa agrega 100–200 A. La polimerasa sigue y sale ARN sobrante.',
+ 'Una ribonucleasa degrada el ARN sobrante (sin caperuza), choca con la ARN polimerasa II y esta se suelta del ADN.',
+ 'El ARNm maduro sale por un poro nuclear al citoplasma, donde lo traduce el ribosoma. El ADN se queda en el núcleo.'];
+let leerDone=false,leerObs=null;
+function compCard(id,i){const d=DEF[id];const role=i!=null&&d.r&&d.r[i];
+ return `<div class="comp" style="--c:var(${d.c||'--ink'})"><h4>${esc(d.n)}</h4>${pills(d.src)}<div class="lab2 q">Qué es</div><p>${d.w}</p><div class="lab2 h">Qué hace</div><p>${d.h}</p>${role?`<div class="lab2 n">En esta parte</div><p>${role}</p>`:''}${d.warn?`<p class="note">${d.warn}</p>`:''}</div>`}
+function renderLeer(){
+ if(leerDone)return;leerDone=true;
+ const canPrint=!(window.claude&&window.claude.use);
+ const parts=STEPS.map((S,i)=>`<article class="card lpart" id="lp${i}"><div class="meta"><span>Parte ${i} de 9 · ${S.s}</span>${pills(S.src)}</div><h2>${S.t}</h2>
+  <div class="lfig"><svg viewBox="0 0 1000 500" role="img" aria-label="Imagen de la parte ${i}: ${esc(S.t)}">${renderAt(QT[i],{labels:true,interactive:false})}</svg></div>
+  ${S.h}
+  <div class="who"><span class="lbl">Componentes de esta parte</span></div>
+  <div class="comps">${S.who.map(id=>compCard(id,i)).join('')}</div>
+  <div class="row" style="margin-top:14px"><button class="btn pri" type="button" data-play="${i}">▶ Ver esta parte en la animación</button></div></article>`).join('');
+ const gl=Object.keys(DEF).sort((a,b)=>DEF[a].n.localeCompare(DEF[b].n,'es')).map(id=>{const d=DEF[id];const where=STEPS.map((S,i)=>S.who.includes(id)?i:-1).filter(i=>i>=0);
+  return `<div class="comp" style="--c:var(${d.c||'--ink'})"><h4>${esc(d.n)}</h4>${pills(d.src)}<div class="lab2 q">Qué es</div><p>${d.w}</p><div class="lab2 h">Qué hace</div><p>${d.h}</p>${d.warn?`<p class="note">${d.warn}</p>`:''}${where.length?`<p class="muted" style="margin-top:8px">Aparece en: ${where.map(i=>`<a href="#lp${i}" data-jump="lp${i}">${i}. ${CHN[i]}</a>`).join(' · ')}</p>`:''}</div>`}).join('');
+ $('#leer').innerHTML=`<nav class="toc" aria-label="Índice"><span class="tt meta">Índice</span><a href="#lp-res" data-jump="lp-res"><b>★</b>Resumen</a>${STEPS.map((S,i)=>`<a href="#lp${i}" data-jump="lp${i}"><b>${i}</b>${CHN[i]}</a>`).join('')}<a href="#lp-gl" data-jump="lp-gl"><b>A–Z</b>Glosario</a></nav>
+ <div class="lbody">
+  <div class="ltools"><input type="search" id="lsearch" placeholder="Buscar en todo: caperuza, TATA, 5′, splicing…" aria-label="Buscar en toda la información" autocomplete="off"><span class="muted" id="lcount"></span>${canPrint?'<button class="btn" type="button" id="lprint">Imprimir / guardar PDF</button>':''}</div>
+  <section class="card lpart" id="lp-res"><div class="meta"><span>Repaso rápido</span></div><h2>Resumen en una línea por parte</h2><ul class="clean sumlist">${SUM.map((x,i)=>`<li><a href="#lp${i}" data-jump="lp${i}"><b style="color:inherit">${i}. ${CHN[i]}:</b></a> ${x}</li>`).join('')}</ul></section>
+  ${parts}
+  <section class="card lpart" id="lp-gl"><div class="meta"><span>${Object.keys(DEF).length} componentes</span></div><h2>Glosario de componentes (A–Z)</h2><div class="comps">${gl}</div></section>
+  <div class="card lempty" id="lempty">No encontré nada con esa búsqueda. Prueba con otra palabra.</div>
+ </div>`;
+ $('#leer').addEventListener('click',e=>{
+  const j=e.target.closest('[data-jump]');if(j){e.preventDefault();const el=document.getElementById(j.dataset.jump);if(el){if(el.hidden){$('#lsearch').value='';leerSearch('')}document.getElementById(j.dataset.jump).scrollIntoView({behavior:'smooth',block:'start'})}return}
+  const pl=e.target.closest('[data-play]');if(pl){location.hash='proceso';const i=+pl.dataset.play;setTimeout(()=>{window.scrollTo({top:0});jumpCh(i,true)},0);return}
+  if(e.target.closest('#lprint'))window.print();
+ });
+ let tm;$('#lsearch').addEventListener('input',e=>{clearTimeout(tm);tm=setTimeout(()=>leerSearch(e.target.value),160)});
+ if('IntersectionObserver' in window){leerObs=new IntersectionObserver(es=>{es.forEach(en=>{if(en.isIntersecting){$$('.toc a').forEach(a=>a.classList.toggle('on',a.dataset.jump===en.target.id))}})},{rootMargin:'-30% 0px -60% 0px'});$$('.lpart').forEach(x=>leerObs.observe(x));}
+}
+function leerSearch(raw){
+ const body=$('.lbody');
+ body.querySelectorAll('mark').forEach(m=>{const t=document.createTextNode(m.textContent);m.replaceWith(t)});body.normalize();
+ const q=norm(raw);let shown=0;
+ $$('.lpart').forEach(sec=>{
+  if(!q){sec.hidden=false;sec.querySelectorAll('.comp,.sumlist li').forEach(c=>c.hidden=false);return}
+  const items=[...sec.querySelectorAll('.comp,.sumlist li')];let any=false;
+  items.forEach(c=>{const m=norm(c.textContent).includes(q);c.hidden=!m;if(m)any=true});
+  const own=[...sec.children].filter(ch=>!ch.matches('.comps,.sumlist,.lfig')).map(ch=>ch.textContent).join(' ');
+  const ownM=norm(own).includes(q);
+  if(ownM&&sec.id!=='lp-gl'&&sec.id!=='lp-res')items.forEach(c=>c.hidden=false);
+  sec.hidden=!(any||ownM);if(!sec.hidden)shown++;
+ });
+ $('#lempty').style.display=q&&!shown?'block':'none';
+ if(!q){$('#lcount').textContent='';return}
+ const acc={a:'[aáàä]',e:'[eéè]',i:'[iíì]',o:'[oóò]',u:'[uúü]',n:'[nñ]'};
+ const pat=raw.trim().toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/[.*+?^${}()|[\]\\]/g,'\\$&').replace(/[aeioun]/g,c=>acc[c]);
+ let re;try{re=new RegExp(pat,'gi')}catch(err){return}
+ let count=0;
+ const w=document.createTreeWalker(body,NodeFilter.SHOW_TEXT,{acceptNode:n=>{const p=n.parentElement;if(!p||p.closest('svg,[hidden],input,.toc,.ltools'))return NodeFilter.FILTER_REJECT;return re.test(n.nodeValue)?(re.lastIndex=0,NodeFilter.FILTER_ACCEPT):NodeFilter.FILTER_REJECT}});
+ const nodes=[];while(w.nextNode())nodes.push(w.currentNode);
+ nodes.forEach(n=>{const frag=document.createDocumentFragment();let last=0;const v=n.nodeValue;re.lastIndex=0;let m;
+  while((m=re.exec(v))){if(!m[0].length){re.lastIndex++;continue}frag.append(v.slice(last,m.index));const mk=document.createElement('mark');mk.textContent=m[0];frag.append(mk);last=m.index+m[0].length;count++}
+  frag.append(v.slice(last));n.replaceWith(frag)});
+ $('#lcount').textContent=count?`${count} coincidencia${count===1?'':'s'}`:'';
+ const first=body.querySelector('mark');if(first)first.scrollIntoView({behavior:'smooth',block:'center'});
+}
+function setHH(){document.documentElement.style.setProperty('--hh',$('header').offsetHeight+'px')}
+setHH();addEventListener('resize',setHH);
+
 /* ---------- rutas ---------- */
-const VIEWS=['proceso','general','examen','practica'];
+const VIEWS=['proceso','leer','general','examen','practica'];
 function route(){const h=location.hash.slice(1);const v=VIEWS.includes(h)?h:'proceso';
  VIEWS.forEach(x=>{$('#v-'+x).hidden=x!==v;$(`nav a[href="#${x}"]`).classList.toggle('on',x===v)});
- if(v==='examen'&&!EX)newExam();if(v==='practica'&&!PR)pracHome();if(v!=='proceso')pause();}
+ if(v==='leer')renderLeer();if(v==='examen'&&!EX)newExam();if(v==='practica'&&!PR)pracHome();if(v!=='proceso')pause();}
 window.addEventListener('hashchange',route);
 route();setT(0);renderPanel();
 window.addEventListener('resize',()=>{clearTimeout(window.__rz);window.__rz=setTimeout(()=>{if(!$('#v-proceso').hidden)draw()},200)});
