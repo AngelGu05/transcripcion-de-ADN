@@ -19,7 +19,7 @@
   --dna:#5E6E88; --tmpl:#7247CC; --rna:#DD6519; --rnaI:#EFBE97; --exon:#14907D; --intronT:#A5AEBD;
   --prom:#E1A01A; --enh:#D03B72; --pol:#2E6CD4; --polEdge:#1D4C9E; --tbp:#C17A10; --fac:#E8C360; --facEdge:#B38E2A;
   --act:#AE3266; --med:#4C9D53; --spl:#2898B0; --polyA:#AE4810; --xrn:#3C4555; --ribo:#8C6A44; --cap:#A62F2B;
-  --deco-op:.16;
+  --deco-op:.22;
   --display:"Bricolage Grotesque","Segoe UI",system-ui,sans-serif;
   --body:"Atkinson Hyperlegible",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
   --mono:"JetBrains Mono",ui-monospace,Menlo,Consolas,monospace;
@@ -107,7 +107,7 @@ main{padding-block:22px 60px}
 .rail button.seen{color:var(--ink)}
 
 .panel{display:flex;flex-direction:column;gap:14px;min-width:0}
-.card{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:18px}
+.card{background:color-mix(in srgb,var(--surface) 84%,transparent);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);border:1px solid var(--line);border-radius:14px;padding:18px}
 .meta{font:700 .75rem var(--mono);letter-spacing:.07em;text-transform:uppercase;color:var(--muted);display:flex;justify-content:space-between;gap:8px;flex-wrap:wrap}
 .panel h2{font-size:1.4rem;margin:6px 0 10px}
 .panel p,.panel li{margin:0 0 10px}
