@@ -415,10 +415,10 @@ input.bad{border-bottom-color:var(--bad)!important;color:var(--bad)!important;te
       <h2>Tipos de ARN <span class="src"><span class="pill p">PPT</span><span class="pill a">Apuntes</span></span></h2>
       <div class="tbl"><table>
         <tr><th>Tipo</th><th>Qué hace</th></tr>
-        <tr><td><b>ARNm</b> mensajero</td><td>Transmite la información codificante del ADN hasta el ribosoma.</td></tr>
-        <tr><td><b>ARNr</b> ribosómico</td><td>Se encuentra siempre en los ribosomas y participa en la lectura del ARNm. Es el ARN más abundante de la célula.</td></tr>
-        <tr><td><b>ARNt</b> transferencia</td><td>Transporta los aminoácidos para la síntesis de proteínas. Su <b>anticodón</b> se empareja con el <b>codón</b> del ARNm.</td></tr>
-        <tr><td><b>ARN nucleolar</b></td><td>Precursor del ARNr; se origina a partir de distintos segmentos del ADN.</td></tr>
+        <tr><td><b>ARNm</b> mensajero</td><td>Transmite la información codificante del ADN y sirve de pauta para la síntesis de proteínas. Es el que está en <b>menor proporción</b> (menos del 5 % del ARN celular). Se localiza primero en el núcleo, donde se asocia a proteínas, y luego pasa al citoplasma.</td></tr>
+        <tr><td><b>ARNr</b> ribosómico</td><td>Se localiza en los ribosomas; ayuda a leer el ARNm y a <b>catalizar</b> la síntesis de proteínas. Es el <b>más abundante</b> y el de <b>mayor tamaño y peso molecular</b>. Hay varios tipos de ARNr, que se diferencian por su tamaño y se nombran según la velocidad a la que sedimentan en la ultracentrifugación.</td></tr>
+        <tr><td><b>ARNt</b> transferencia</td><td>Transporta los aminoácidos para la síntesis de proteínas. Tiene forma de <b>trébol</b>, está disperso por el citoplasma y es cerca del <b>15 %</b> del ARN. Es el de <b>menor peso molecular</b>: solo 70 a 90 nucleótidos. Su <b>anticodón</b> se empareja con el <b>codón</b> del ARNm.</td></tr>
+        <tr><td><b>ARN nucleolar</b> (ARNn)</td><td>Se origina a partir de distintos segmentos del ADN. Una vez formado, se fragmenta y da lugar a los distintos ARNr.</td></tr>
       </table></div>
     </div>
 
@@ -1064,6 +1064,10 @@ const MC=[
  {id:'m51',tp:'elo',st:4,q:'La burbuja de transcripción se forma porque:',o:['la polimerasa separa las hebras para leer la hebra molde','se agrega la cola poli(A)','el ADN sale del núcleo','se forma el lazo'],a:0,ex:'Avanza junto con la polimerasa.'},
  {id:'m52',tp:'ini',st:1,q:'En tus apuntes aparece "factores de conversión". El nombre correcto es:',o:['factores de traducción','factores de transcripción basales','factores de replicación','factores sigma'],a:1,ex:'Son los factores mínimos que se ensamblan en el promotor.'},
  {id:'m53',tp:'ini',st:3,q:'¿Cuál es la diferencia entre los factores basales y los específicos (activadores)?',o:['Los basales se unen al promotor y los necesita cualquier gen; los específicos se unen al enhancer y activan ciertos genes','Los basales se unen al enhancer y los específicos al promotor','Los basales eliminan intrones','No hay diferencia'],a:0,ex:'Analogía: los basales encienden el carro; los específicos son el acelerador.'},
+ {id:'m55',tp:'gen',st:null,q:'Según el PPT, el ARN que se encuentra en menor proporción (menos del 5 % del ARN celular) es el:',o:['ARNm','ARNr','ARNt','ARN nucleolar'],a:0,ex:'El ARNr es el más abundante; el ARNt es cerca del 15 %.'},
+ {id:'m56',tp:'gen',st:null,q:'ARN con forma de trébol, de menor peso molecular (70 a 90 nucleótidos):',o:['ARNm','ARNr','ARNt','ARN nucleolar'],a:2,ex:'El ARNt está disperso por el citoplasma y transporta aminoácidos.'},
+ {id:'m57',tp:'gen',st:null,q:'Según el PPT, el ARN más abundante y de mayor tamaño y peso molecular es el:',o:['ARNm','ARNr','ARNt','ARN nucleolar'],a:1,ex:'Se localiza en los ribosomas y ayuda a catalizar la síntesis de proteínas.'},
+ {id:'m58',tp:'gen',st:null,q:'El ARN nucleolar (ARNn):',o:['se fragmenta y da lugar a los distintos ARNr','transporta aminoácidos','es la cola del ARNm','se forma en el citoplasma'],a:0,ex:'Se origina a partir de distintos segmentos del ADN.'},
  {id:'m54',tp:'gen',st:0,q:'Un cromosoma humano contiene:',o:['un solo gen','miles de genes','exactamente 15 genes','solo intrones'],a:1,ex:'Un fragmento puede tener unos 15 genes, pero el cromosoma completo tiene miles.'}
 ];
 const FILL=[
