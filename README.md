@@ -12,7 +12,7 @@ Es un solo archivo estático (`index.html`), sin dependencias ni paso de compila
 
 ## Fuentes del contenido
 
-Video de YouTube sobre transcripción, PPT de clase y apuntes. Lo que no viene de esos materiales está marcado como "Externo".
+Video de YouTube sobre transcripción en eucariotas, presentación de clase, apuntes y exámenes de práctica, complementados con bibliografía general.
 
 ## Notas
 
